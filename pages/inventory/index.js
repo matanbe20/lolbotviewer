@@ -1,12 +1,10 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../../styles/Home.module.css';
 import Inventory from '../../components/Inventory';
 
 export default function Home(props) {
   return (
       <div className={styles.container}>
-        <h2 className={styles.main_title}>Hey <span className={styles.userName}> {props.userName}</span>, here is your Inventory: </h2>
+        <h2 className={styles.main_title}><span className={styles.userName}> {props.userName}</span>, you got a total of <span className={styles.number_champs}>{props.user.inventory.length}</span> Champions</h2>
         <Inventory user={props.user}/>
       </div>
   );

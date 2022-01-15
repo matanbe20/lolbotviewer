@@ -1,13 +1,22 @@
+@import url('http://fonts.cdnfonts.com/css/menlo');
+
 .container {
     background: #2f2f33;
     color: #9f9f9f;
     min-height: 100vh;
-    padding: 15px;
+    padding: 55px 15px;
+    letter-spacing: 1px;
+    font-family: Menlo, serif;
 }
 
 .userName {
-    color: white;
+    color: #79d95c;
 }
+
+.number_champs {
+    color: #58a7f6;
+}
+
 .main_title {
     margin: 0 auto 25px;
     text-align: center;
@@ -114,10 +123,7 @@
     line-height: 1.5;
 }
 
-.logo {
-    height: 1em;
-    margin-left: 0.5rem;
-}
+
 
 @media (max-width: 600px) {
     .grid {

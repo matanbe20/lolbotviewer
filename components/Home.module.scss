@@ -1,20 +1,33 @@
 @import url('http://fonts.cdnfonts.com/css/menlo');
 
 
-.inventoryContainer {
+.HomeContainer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
+.ImgContainer {
+  img {
+    border-radius: 50%;
+  }
+}
+
 .itemContainer {
   margin: 15px;
+  width: 160px;
+  height: 180px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-
+  border: 1px solid #505050;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 10px;
   &:hover {
-    transform: scale(1.15);
+    transform: scale(1.1);
+    border: 1px solid #909090;
   }
 }
 
@@ -31,12 +44,7 @@
   font-size: 12px;
   position: absolute;
   left: 25px;
-  color: #9f9f9f;
   top: 25px;
-  cursor: pointer;
   font-family: Menlo, serif;
-  &:hover {
-    color: #58a7f6;
-  }
 }
 

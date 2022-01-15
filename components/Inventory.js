@@ -1,6 +1,8 @@
 import styles from './Inventory.module.scss';
 
 const Inventory = ({ user }) => {
+
+
   return (
       <div className={styles.inventoryContainer}>
         {
@@ -13,7 +15,7 @@ const Inventory = ({ user }) => {
                         className={styles.inventoryImg}
                         src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${item.id}_0.jpg`}
                         alt="Problem" />
-                    <p className={styles.itemDesc}>Level: {item.level} {item.level >= 3 && '⭐'}</p>
+                    <p className={styles.itemDesc}> <strong>{item.level} {item.level >= 3 && '⭐'}</strong></p>
                   </div>
                 </div>
             );
