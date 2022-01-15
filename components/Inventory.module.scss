@@ -1,0 +1,25 @@
+.inventoryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemContainer {
+  margin: 15px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.inventoryImg {
+  height: 225px;
+}
+
+.itemDesc {
+  margin: 5px 0;
+  text-align: center;
+}
