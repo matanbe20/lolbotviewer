@@ -14,8 +14,9 @@ export default function Home(props) {
 
 Home.getInitialProps = async (ctx) => {
   console.log(ctx.query.user);
+  const baseUrl = process.env.node_env === 'production' ? 'https://lolbotviewer.vercel.app' : 'http://localhost:3000';
   const res = await fetch(
-      `http://localhost:3000/api/fetch?user=${ctx.query.user}`);
+      `${baseUrl}/api/fetch?user=${ctx.query.user}`);
   const result = await res.json();
   return {
     user: result,
