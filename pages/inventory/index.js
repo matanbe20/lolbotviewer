@@ -2,10 +2,16 @@ import styles from '../../styles/Home.module.css';
 import Inventory from '../../components/Inventory';
 
 export default function Home(props) {
-  console.log(props)
+  let totalLevels = 0;
+  props.user.inventory.forEach(item => {
+    totalLevels += parseInt(item.level)
+  });
+
+  console.log(totalLevels)
   return (
       <div className={styles.container}>
         <h2 className={styles.main_title}><span className={styles.userName}> {props.user.username}</span>, you got a total of <span className={styles.number_champs}>{props.user.inventory.length}</span> Champions</h2>
+        <h4 style={{textAlign: 'center'}}>total levels: {totalLevels}</h4>
         <Inventory user={props.user}/>
       </div>
   );
