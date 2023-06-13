@@ -12,6 +12,7 @@ export default async function handler(req, res) {
   console.log(req.query.user);
   const user = req.query.user;
   const users = await getAsync(USERS_LIST);
+  console.log(JSON.parse(users)[user])
   return res.status(200).send(JSON.parse(users)[user]);
 }
 

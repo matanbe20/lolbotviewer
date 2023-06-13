@@ -1,4 +1,4 @@
-import styles from './Inventory.module.scss';
+import styles from './Inventory.module.css';
 import { useMemo } from "react";
 
 const Inventory = ({ user }) => {

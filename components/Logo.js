@@ -1,4 +1,4 @@
-import styles from './Inventory.module.scss';
+import styles from './Inventory.module.css';
 
 const Logo = ()=> {
   const navigate = ()=> {

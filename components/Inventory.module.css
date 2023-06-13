@@ -12,10 +12,10 @@
   margin: 15px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+}
 
-  &:hover {
-    transform: scale(1.15);
-  }
+.itemContainer:hover {
+  transform: scale(1.15);
 }
 
 .inventoryImg {
@@ -35,8 +35,8 @@
   top: 25px;
   cursor: pointer;
   font-family: Menlo, serif;
-  &:hover {
-    color: #58a7f6;
-  }
 }
 
+.logo:hover {
+  color: #58a7f6;
+}

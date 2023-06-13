@@ -10,6 +10,7 @@ const USERS_LIST = 'users';
 export default async function handler(req, res) {
   const getAsync = promisify(redisClient.get).bind(redisClient);
   const users = await getAsync(USERS_LIST);
+  console.log(users)
   return res.status(200).send(JSON.parse(users));
 }
 

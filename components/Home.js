@@ -1,4 +1,4 @@
-import styles from './Home.module.scss';
+import styles from './Home.module.css';
 const medals ={
   1: '🥈',
   2: '🥉',
@@ -7,10 +7,8 @@ const medals ={
 
 const Home = (props) => {
   const usersList = Object.keys(props.users).sort((a, b) => {
-    console.log(a, b);
     return props.users[b].inventory.length - props.users[a].inventory.length
   });
-  console.log(usersList);
   const goToInventory = userName =>{
     window.location.href = `/inventory/?user=${userName}`;
   }
@@ -21,7 +19,7 @@ const Home = (props) => {
         {usersList.map((value, i) => {
           return (
               <div onClick={()=> goToInventory(value)} className={styles.itemContainer} key={value}>
-                <h3>{value} {medals[i]}</h3>
+                <h3>{props.users[value].username} {medals[i]}</h3>
                 <div className={styles.ImgContainer}>
                   <img height={50} src={props.users[value].avatarUrl}
                        alt="" />
