@@ -1,11 +1,14 @@
 import '../styles/globals.css';
 import Logo from '../components/Logo';
+import WaitForRouter from '../components/WaitForRouter';
 
 function MyApp({ Component, pageProps }) {
   return (
       <>
         <Logo />
-        <Component {...pageProps} />
+        <WaitForRouter>
+          <Component {...pageProps} />
+        </WaitForRouter>
       </>
   );
 }

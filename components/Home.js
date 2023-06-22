@@ -7,6 +7,9 @@ const medals = {
 }
 
 const Home = (props) => {
+  if (typeof window === undefined) {
+    return null;
+  }
   const isSmall = useMediaQuery('(max-width: 768px)');
   const sorted = Object.keys(props.users).sort((a, b) => {
     return props.users[b].inventory.length - props.users[a].inventory.length
@@ -25,7 +28,7 @@ const Home = (props) => {
         return <div key={i} onClick={() => goToInventory(value)}>
           <div style={{ textAlign: 'center', marginBottom: 5 }}>{medals[i]}</div>
           <div className={styles.topRank}>
-            <img style={{ borderRadius: '50%' }} height={50} src={props.users[value].avatarUrl}
+            <img style={{ borderRadius: '50%' }} height={50} src={props.users[value].avatarUrl ?? ''}
                  alt=""/>
             <span>{props.users[value].username}</span>
             <p>{props.users[value].inventory.length} Champions
