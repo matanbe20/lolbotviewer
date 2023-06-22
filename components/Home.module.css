@@ -10,11 +10,12 @@
 
 .top3 > :nth-child(1) {
   order: 2;
+  align-self: end;
 }
 
 .top3 > :nth-child(2) {
   order: 1;
-  align-self: center;
+  align-self: end;
 }
 
 .top3 > :nth-child(3) {
@@ -29,10 +30,19 @@
   flex-direction: column;
   text-align: center;
   border-radius: 5px;
-  height: 180px;
+  height: 160px;
   width: 160px;
   border: 1px solid #505050;
   gap: 5px;
+  padding-top: 15px;
+}
+
+.rank1 {
+  height: 210px;
+}
+
+.rank2 {
+  height: 180px;
 }
 
 .leaderboard {
@@ -45,12 +55,13 @@
 .leaderboardRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   cursor: pointer;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(159, 159, 159, 0.73);
+  padding: 10px;
+}
+
+.champions {
+  margin-left: auto;
 }
 
 @media (max-width: 600px) {
