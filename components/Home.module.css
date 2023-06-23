@@ -7,7 +7,6 @@
 
 .topRank {
   width: var(--player-width);
-  position: relative;
   align-self: end;
 }
 
@@ -24,25 +23,38 @@
 }
 
 .topRank a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  display: block;
   text-align: center;
-  border-radius: 5px;
-  width: calc(var(--player-width) - 2rem);
-  min-height: var(--player-height);
   margin: 0 auto 10px;
-  border: 1px solid #505050;
-  padding-top: 15px;
   gap: 5px;
 }
 
-.podium {
-  background-color: #7a5327;
+.topRank a > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.avatarWrapper {
+  width: 0;
+  height: 50px;
+  margin: auto;
+  border-radius: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.avatar {
+  height: 50px;
+  border-radius: 100%;
+}
+
+.podium {
+  background-color: hsl(240, 4%, 22%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
 }
 
 .rank1 .podium {
@@ -55,21 +67,14 @@
   height: var(--podium-rank2-height);
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  border-right: 2px solid hsl(32deg 52% 12% / 20%);
+  border-right: 2px solid hsl(240 4% 20%);
 }
 
 .rank3 .podium {
   height: var(--podium-rank3-height);
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
-  border-left: 2px solid hsl(32deg 52% 12% / 20%);
-}
-
-.medalWrapper {
-  width: 70px;
-  height: 70px;
-  border-radius: 100%;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-left: 2px solid hsl(240 4% 20%);
 }
 
 .leaderboard {
@@ -79,12 +84,21 @@
   margin: 50px auto;
 }
 
+.leaderboardRow:nth-child(even) {
+  background-color: #acacac0f;
+}
+
 .leaderboardRow a {
   display: flex;
   align-items: center;
   gap: 24px;
   cursor: pointer;
   padding: 10px;
+  transition: all 0.15s ease-in-out;
+}
+
+.leaderboardRow a:hover {
+  background-color: hsl(0deg 0% 100% / 13%);
 }
 
 .champions {
