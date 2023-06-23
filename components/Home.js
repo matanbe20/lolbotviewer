@@ -43,7 +43,6 @@ const Home = (props) => {
             >
               <Link
                 href={`/inventory/?user=${value}`}
-                as={`/inventory/${value}`}
                 legacyBehavior
               >
                 <a>
