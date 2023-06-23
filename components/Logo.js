@@ -1,12 +1,12 @@
-import styles from './Inventory.module.css';
+import Link from "next/link";
+import styles from "./Inventory.module.css";
 
-const Logo = ()=> {
-  const navigate = ()=> {
-    window.location.href = '/'
-  }
-
-  return <span className={styles.logo} onClick={navigate}>#LoLBot_Viewer</span>
-
-}
+const Logo = () => {
+  return (
+    <Link href="/" className={styles.logo}>
+      #LoLBot_Viewer
+    </Link>
+  );
+};
 
 export default Logo;

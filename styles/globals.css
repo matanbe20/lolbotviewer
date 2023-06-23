@@ -1,3 +1,10 @@
+:root {
+  --podium-rank1-height: 150px;
+  --podium-rank2-height: 120px;
+  --podium-rank3-height: 100px;
+  --player-width: 200px;
+}
+
 html,
 body {
   padding: 0;
@@ -8,12 +15,11 @@ body {
 }
 
 @font-face {
-    font-family: 'Menlo';
-    font-style: normal;
-    font-weight: normal;
-    src: local('Menlo Regular'), url('Menlo-Regular.woff') format('woff');
+  font-family: "Menlo";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Menlo Regular"), url("Menlo-Regular.woff") format("woff");
 }
-
 
 a {
   color: inherit;
@@ -23,4 +29,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
