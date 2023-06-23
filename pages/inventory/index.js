@@ -8,7 +8,6 @@ export default function InventoryPage(props) {
     totalLevels += parseInt(item.level);
   });
 
-  console.log(totalLevels);
   return (
     <div className={styles.container}>
       <Head>
@@ -28,21 +27,7 @@ export default function InventoryPage(props) {
   );
 }
 
-// InventoryPage.getInitialProps = async (ctx) => {
-//   console.log(ctx.query.user);
-//   const baseUrl =
-//     process.env.node_env === "production"
-//       ? "https://lolbotviewer.vercel.app"
-//       : "http://localhost:3000";
-//   const res = await fetch(`${baseUrl}/api/fetch?user=${ctx.query.user}`);
-//   const result = await res.json();
-//   return {
-//     user: result,
-//     userName: ctx.query.user,
-//   };
-// };
 export const getServerSideProps = async ({ query }) => {
-  console.log(query);
   const baseUrl =
     process.env.node_env === "production"
       ? "https://lolbotviewer.vercel.app"
