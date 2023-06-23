@@ -9,7 +9,18 @@ export default function Index(props) {
   );
 }
 
-Index.getInitialProps = async (ctx) => {
+// Index.getInitialProps = async (ctx) => {
+//   const baseUrl =
+//     process.env.node_env === "production"
+//       ? "https://lolbotviewer.vercel.app"
+//       : "http://localhost:3000";
+//   const res = await fetch(`${baseUrl}/api/getAll`);
+//   const result = await res.json();
+//   return {
+//     users: result,
+//   };
+// };
+export const getServerSideProps = async (ctx) => {
   const baseUrl =
     process.env.node_env === "production"
       ? "https://lolbotviewer.vercel.app"
@@ -17,6 +28,8 @@ Index.getInitialProps = async (ctx) => {
   const res = await fetch(`${baseUrl}/api/getAll`);
   const result = await res.json();
   return {
-    users: result,
+    props: {
+      users: result,
+    },
   };
 };
