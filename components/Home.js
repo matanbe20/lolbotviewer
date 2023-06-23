@@ -5,7 +5,7 @@ import { useMemo } from "react";
 
 const ranks = {
   0: {
-    medal: "🏅",
+    medal: "🥇",
     color: "51, 100%, 50%",
   },
   1: {
@@ -19,10 +19,6 @@ const ranks = {
 };
 
 const Home = (props) => {
-  if (typeof window === undefined) {
-    return null;
-  }
-
   const isSmall = useMediaQuery("(max-width: 768px)");
   const sorted = Object.keys(props.users).sort((a, b) => {
     return props.users[b].inventory.length - props.users[a].inventory.length;
