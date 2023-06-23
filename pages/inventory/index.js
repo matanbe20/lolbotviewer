@@ -2,7 +2,7 @@ import styles from "../../styles/Home.module.css";
 import Inventory from "../../components/Inventory";
 import Head from "next/head";
 
-export default function Home(props) {
+export default function InventoryPage(props) {
   let totalLevels = 0;
   props.user.inventory.forEach((item) => {
     totalLevels += parseInt(item.level);
@@ -28,16 +28,31 @@ export default function Home(props) {
   );
 }
 
-Home.getInitialProps = async (ctx) => {
-  console.log(ctx.query.user);
+// InventoryPage.getInitialProps = async (ctx) => {
+//   console.log(ctx.query.user);
+//   const baseUrl =
+//     process.env.node_env === "production"
+//       ? "https://lolbotviewer.vercel.app"
+//       : "http://localhost:3000";
+//   const res = await fetch(`${baseUrl}/api/fetch?user=${ctx.query.user}`);
+//   const result = await res.json();
+//   return {
+//     user: result,
+//     userName: ctx.query.user,
+//   };
+// };
+export const getServerSideProps = async ({ query }) => {
+  console.log(query);
   const baseUrl =
     process.env.node_env === "production"
       ? "https://lolbotviewer.vercel.app"
       : "http://localhost:3000";
-  const res = await fetch(`${baseUrl}/api/fetch?user=${ctx.query.user}`);
+  const res = await fetch(`${baseUrl}/api/fetch?user=${query.user}`);
   const result = await res.json();
   return {
-    user: result,
-    userName: ctx.query.user,
+    props: {
+      user: result,
+      userName: query.user,
+    },
   };
 };
