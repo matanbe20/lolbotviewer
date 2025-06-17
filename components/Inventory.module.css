@@ -40,3 +40,72 @@
 .logo:hover {
   color: #58a7f6;
 }
+
+/* Modal styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #2f2f33;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #eaeaea; /* Ensure text is visible on white background */
+  position: relative; /* For positioning the close icon */
+}
+
+.skinsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 20px; /* Add some space below the title/close button */
+  clear: both; /* Ensure it clears the floated close button */
+}
+
+.skinItem {
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+}
+
+.skinImage {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Adjust as needed */
+  object-fit: cover; /* Or 'contain' depending on desired look */
+  border-bottom: 1px solid #555;
+  margin-bottom: 5px;
+}
+
+/* Ensure itemDesc for skin count is legible if not already handled */
+/* .itemDesc { already exists, assuming it's fine for skin count too } */
+
+.modalCloseIcon {
+  color: #9f9f9f; /* Light gray, consistent with other text */
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px; /* Make it larger */
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px; /* Add some padding for easier clicking */
+  line-height: 1; /* Ensure consistent height */
+}
+
+.modalCloseIcon:hover {
+  color: #eaeaea; /* Lighter gray on hover */
+}
