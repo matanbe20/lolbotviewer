@@ -56,29 +56,15 @@
 }
 
 .modalContent {
-  background-color: #fff;
+  background-color: #2f2f33;
   padding: 20px;
   border-radius: 8px;
   width: 80%;
   max-width: 600px;
   max-height: 90vh;
   overflow-y: auto;
-  color: #333; /* Ensure text is visible on white background */
-}
-
-.closeButton {
-  background-color: #f44336;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-  margin-bottom: 10px;
-}
-
-.closeButton:hover {
-  background-color: #d32f2f;
+  color: #eaeaea; /* Ensure text is visible on white background */
+  position: relative; /* For positioning the close icon */
 }
 
 .skinsGrid {
@@ -90,7 +76,7 @@
 }
 
 .skinItem {
-  border: 1px solid #ddd;
+  border: 1px solid #555;
   border-radius: 4px;
   padding: 10px;
   text-align: center;
@@ -101,9 +87,25 @@
   height: auto;
   max-height: 200px; /* Adjust as needed */
   object-fit: cover; /* Or 'contain' depending on desired look */
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #555;
   margin-bottom: 5px;
 }
 
 /* Ensure itemDesc for skin count is legible if not already handled */
 /* .itemDesc { already exists, assuming it's fine for skin count too } */
+
+.modalCloseIcon {
+  color: #9f9f9f; /* Light gray, consistent with other text */
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px; /* Make it larger */
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px; /* Add some padding for easier clicking */
+  line-height: 1; /* Ensure consistent height */
+}
+
+.modalCloseIcon:hover {
+  color: #eaeaea; /* Lighter gray on hover */
+}

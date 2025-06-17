@@ -38,7 +38,7 @@ const Inventory = ({ user }) => {
         <div className={styles.modalOverlay}>
           <div className={styles.modalContent}>
             <h2>{selectedChampionSkins.name} Skins</h2>
-            <button onClick={() => { setIsModalOpen(false); setSelectedChampionSkins(null); }} className={styles.closeButton}>Close</button>
+            <span onClick={() => { setIsModalOpen(false); setSelectedChampionSkins(null); }} className={styles.modalCloseIcon}>&times;</span>
             <div className={styles.skinsGrid}>
               {selectedChampionSkins.skins && selectedChampionSkins.skins.length > 0 ? (
                 selectedChampionSkins.skins.map((skin) => (
