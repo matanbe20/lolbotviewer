@@ -28,7 +28,7 @@ const Inventory = ({ user }) => {
                   src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${item.id}_0.jpg`}
                   alt="Problem"/>
                 <p className={styles.itemDesc}><strong>{item.level} {item.level >= 15 && '🤯' || item.level >= 10 && '💫' || item.level >= 5 && '🌟' || item.level >= 3 && '⭐'}</strong></p>
-                <p className={styles.itemDesc}>Skins: {item.skins?.length || 0}</p>
+                <p className={styles.itemDesc} style={{fontSize: 12}}>({item.skins?.length || 0})</p>
               </div>
             </div>
           );
