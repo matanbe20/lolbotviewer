@@ -26,7 +26,7 @@ export default function InventoryPage(props) {
         <span className={styles.number_champs}>
           {props.user.inventory.length}
         </span>{" "}
-        Champions and <span className={styles.number_skins}>{totalSkins}</span> Skins
+        Champions and <span className={styles.number_skins} style={{color : "#ffb62f"}}>{totalSkins}</span> Skins
       </h2>
       <h4 style={{ textAlign: "center" }}>Total levels: {totalLevels}</h4>
       <Inventory user={props.user} />
