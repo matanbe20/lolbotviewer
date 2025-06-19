@@ -8,6 +8,13 @@ export default function InventoryPage(props) {
     totalLevels += parseInt(item.level);
   });
 
+  let totalSkins = 0;
+  props.user.inventory.forEach((item) => {
+    if (item.skins && Array.isArray(item.skins)) { // Ensure skins is an array
+      totalSkins += item.skins.length;
+    }
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,7 +26,7 @@ export default function InventoryPage(props) {
         <span className={styles.number_champs}>
           {props.user.inventory.length}
         </span>{" "}
-        Champions
+        Champions and <span className={styles.number_skins}>{totalSkins}</span> Skins
       </h2>
       <h4 style={{ textAlign: "center" }}>Total levels: {totalLevels}</h4>
       <Inventory user={props.user} />
