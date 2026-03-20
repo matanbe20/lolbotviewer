@@ -25,7 +25,7 @@ const Inventory = ({ user }) => {
                 <h3 className={styles.itemDesc}>{item.name}</h3>
                 <img
                   className={styles.inventoryImg}
-                  src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${item.id}_0.jpg`}
+                  src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${item.numericId}/${item.numericId * 1000}.jpg`}
                   alt="Problem"/>
                 <p className={styles.itemDesc}><strong>{item.level} {item.level >= 15 && '🤯' || item.level >= 10 && '💫' || item.level >= 5 && '🌟' || item.level >= 3 && '⭐'}</strong></p>
                 <p className={styles.itemDesc} style={{fontSize: 12}}>({item.skins?.length || 0})</p>
@@ -44,7 +44,7 @@ const Inventory = ({ user }) => {
                 selectedChampionSkins.skins.map((skin) => (
                   <div key={skin.id} className={styles.skinItem}>
                     <img
-                      src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${selectedChampionSkins.id}_${skin.num}.jpg`}
+                      src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${selectedChampionSkins.numericId}/${selectedChampionSkins.numericId * 1000 + skin.num}.jpg`}
                       alt={skin.name}
                       className={styles.skinImage}
                     />
