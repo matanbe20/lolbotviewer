@@ -1,6 +1,8 @@
 import styles from './Inventory.module.css';
 import { useMemo, useState } from "react";
 
+const DDRAGON_VERSION = "16.6.1";
+
 const Inventory = ({ user }) => {
   const sortInventory = (inventory) => {
     return inventory?.sort((a, b) => b.level - a.level);
@@ -9,10 +11,30 @@ const Inventory = ({ user }) => {
 
   const [selectedChampionSkins, setSelectedChampionSkins] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [parentSkinMap, setParentSkinMap] = useState({});
 
-  const handleChampionClick = (champion) => {
+  const handleChampionClick = async (champion) => {
     setSelectedChampionSkins(champion);
     setIsModalOpen(true);
+    setParentSkinMap({});
+
+    try {
+      const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/data/en_US/champion/${champion.id}.json`);
+      const data = await res.json();
+      const skins = data.data[champion.id].skins;
+      const map = {};
+      skins.forEach(s => {
+        if (s.parentSkin != null) map[s.num] = s.parentSkin;
+      });
+      setParentSkinMap(map);
+    } catch (e) {
+      // silently fail — images will just try original num
+    }
+  };
+
+  const getSkinImageUrl = (championId, skinNum) => {
+    const resolvedNum = parentSkinMap[skinNum] ?? skinNum;
+    return `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championId}_${resolvedNum}.jpg`;
   };
 
   return (
@@ -42,9 +64,9 @@ const Inventory = ({ user }) => {
             <div className={styles.skinsGrid}>
               {selectedChampionSkins.skins && selectedChampionSkins.skins.length > 0 ? (
                 selectedChampionSkins.skins.map((skin) => (
-                  <div key={skin.id} className={styles.skinItem}>
+                  <div key={skin.num} className={styles.skinItem}>
                     <img
-                      src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${selectedChampionSkins.id}_${skin.num}.jpg`}
+                      src={getSkinImageUrl(selectedChampionSkins.id, skin.num)}
                       alt={skin.name}
                       className={styles.skinImage}
                     />
