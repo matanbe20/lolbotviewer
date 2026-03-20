@@ -1,7 +1,11 @@
 import styles from './Inventory.module.css';
 import { useMemo, useState } from "react";
 
-const DDRAGON_VERSION = "16.6.1";
+let ddragonVersion = "16.6.1";
+fetch("https://ddragon.leagueoflegends.com/api/versions.json")
+  .then(r => r.json())
+  .then(v => { ddragonVersion = v[0]; })
+  .catch(() => {});
 
 const Inventory = ({ user }) => {
   const sortInventory = (inventory) => {
@@ -19,7 +23,7 @@ const Inventory = ({ user }) => {
     setParentSkinMap({});
 
     try {
-      const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${DDRAGON_VERSION}/data/en_US/champion/${champion.id}.json`);
+      const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/champion/${champion.id}.json`);
       const data = await res.json();
       const skins = data.data[champion.id].skins;
       const map = {};
