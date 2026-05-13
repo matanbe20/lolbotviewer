@@ -24,8 +24,12 @@ const Home = (props) => {
   }
 
   const isSmall = useMediaQuery("(max-width: 768px)");
+  const totalPulled = (user) =>
+    user.inventory.reduce((sum, c) => sum + (c.level || 1), 0);
+
   const sorted = Object.keys(props.users).sort((a, b) => {
-    return props.users[b].inventory.length - props.users[a].inventory.length;
+    const countDiff = props.users[b].inventory.length - props.users[a].inventory.length;
+    return countDiff !== 0 ? countDiff : totalPulled(props.users[b]) - totalPulled(props.users[a]);
   });
 
   const usersList = useMemo(() => {
