@@ -1,24 +1,48 @@
 :root {
+  /* Podium layout vars (consumed by Home.module.css) */
   --podium-rank1-height: 150px;
   --podium-rank2-height: 120px;
   --podium-rank3-height: 100px;
   --player-width: 200px;
+
+  /* Color system */
+  --color-bg-base:       #0A0E1A;
+  --color-bg-surface:    #0F1523;
+  --color-bg-card:       #141926;
+  --color-bg-card-hover: #1A2236;
+  --color-bg-modal:      #0F1523;
+  --color-bg-navbar:     rgba(10, 14, 26, 0.85);
+
+  --color-gold-primary:  #C8AA6E;
+  --color-gold-bright:   #F0E6D3;
+  --color-gold-dim:      #785A28;
+
+  --color-blue-accent:   #0BC4E3;
+
+  --color-rank1:         #C8AA6E;
+  --color-rank2:         #A0B4C8;
+  --color-rank3:         #CD7F32;
+
+  --color-text-primary:  #C8C8C8;
+  --color-text-muted:    #6A7080;
+  --color-text-heading:  #F0E6D3;
+
+  --font-base: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-card:  8px;
+  --radius-badge: 4px;
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #2f2f33;
-}
-
-@font-face {
-  font-family: "Menlo";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Menlo Regular"), url("Menlo-Regular.woff") format("woff");
+  font-family: var(--font-base);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
 }
 
 a {
@@ -28,4 +52,65 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-base); }
+::-webkit-scrollbar-thumb { background: var(--color-gold-dim); border-radius: 3px; }
+* { scrollbar-color: var(--color-gold-dim) var(--color-bg-base); scrollbar-width: thin; }
+
+/* ---- Navbar ---- */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: var(--color-bg-navbar);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-gold-dim);
+}
+
+.nav-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-gold-bright);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-brand:hover {
+  color: var(--color-gold-primary);
+}
+
+.nav-brand-hash {
+  color: var(--color-blue-accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-gold-primary);
 }

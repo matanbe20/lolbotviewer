@@ -1,11 +1,15 @@
 import Link from "next/link";
-import styles from "./Inventory.module.css";
 
 const Logo = () => {
   return (
-    <Link href="/" className={styles.logo}>
-      #LoLBot_Viewer
-    </Link>
+    <nav className="nav-bar">
+      <Link href="/" className="nav-brand">
+        <span className="nav-brand-hash">#</span>LoLBot
+      </Link>
+      <div className="nav-links">
+        <Link href="/" className="nav-link">Leaderboard</Link>
+      </div>
+    </nav>
   );
 };
 

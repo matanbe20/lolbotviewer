@@ -10,7 +10,7 @@ export default function InventoryPage(props) {
 
   let totalSkins = 0;
   props.user.inventory.forEach((item) => {
-    if (item.skins && Array.isArray(item.skins)) { // Ensure skins is an array
+    if (item.skins && Array.isArray(item.skins)) {
       totalSkins += item.skins.length;
     }
   });
@@ -18,17 +18,40 @@ export default function InventoryPage(props) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>{props.user.username ?? "Unknown"}'s inventory</title>
+        <title>{props.user.username ?? "Unknown"}&apos;s inventory</title>
       </Head>
-      <h2 className={styles.main_title}>
-        <span className={styles.userName}> {props.user.username}</span>, you got
-        a total of{" "}
-        <span className={styles.number_champs}>
-          {props.user.inventory.length}
-        </span>{" "}
-        Champions and <span className={styles.number_skins} style={{color: "orange"}}>{totalSkins}</span> Skins
-      </h2>
-      <h4 style={{ textAlign: "center" }}>Total levels: {totalLevels}</h4>
+
+      <div className={styles.inventoryHero}>
+        {props.user.avatarUrl && (
+          <img
+            src={props.user.avatarUrl}
+            alt={props.user.username}
+            className={styles.inventoryAvatar}
+          />
+        )}
+        <div className={styles.inventoryUserInfo}>
+          <h1 className={styles.inventoryUsername}>
+            {props.user.username ?? "Unknown"}
+          </h1>
+          <div className={styles.inventoryStatsBar}>
+            <div className={styles.inventoryStat}>
+              <span className={styles.inventoryStatValue}>
+                {props.user.inventory.length}
+              </span>
+              <span className={styles.inventoryStatLabel}>Unique Champions</span>
+            </div>
+            <div className={styles.inventoryStat}>
+              <span className={styles.inventoryStatValue}>{totalLevels}</span>
+              <span className={styles.inventoryStatLabel}>Total Pulls</span>
+            </div>
+            <div className={styles.inventoryStat}>
+              <span className={styles.inventoryStatValue}>{totalSkins}</span>
+              <span className={styles.inventoryStatLabel}>Skins Owned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <Inventory user={props.user} />
     </div>
   );
