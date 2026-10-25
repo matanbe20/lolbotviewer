@@ -1,0 +1,17 @@
+.avatar {
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--abyss);
+}
+
+.fallback {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--blue-5), var(--void));
+  color: var(--gold-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+}

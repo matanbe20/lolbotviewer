@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mock:generate": "node scripts/generate-mock-users.mjs"
   },
   "dependencies": {
     "canvas-confetti": "^1.9.4",

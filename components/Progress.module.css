@@ -1,0 +1,37 @@
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  background: rgba(1, 10, 19, 0.9);
+  border: 1px solid rgba(10, 200, 185, 0.22);
+}
+
+.fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue-4), var(--blue-2) 70%, var(--blue-1));
+  box-shadow: 0 0 10px rgba(10, 200, 185, 0.6);
+  animation: grow 1s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform-origin: left;
+}
+
+.label {
+  min-width: 3.4ch;
+  text-align: right;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--blue-1);
+}
+
+@keyframes grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}

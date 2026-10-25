@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LoLBot Viewer
 
-## Getting Started
+Leaderboard and champion collections for the LoLBot bot, styled after the League of Legends client.
+Built with [Next.js](https://nextjs.org/) (pages router); champion art comes from Riot's [Data Dragon](https://developer.riotgames.com/docs/lol#data-dragon) CDN.
 
-First, run the development server:
+- `/` – leaderboard, ranked by unique champions (total pulls break ties)
+- `/inventory/<userId>` – a player's collection, with a skin viewer per champion
+- `/api/getAll`, `/api/fetch?user=<userId>` – raw user data
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Data
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+User data lives in Redis under the `users` key (see `lib/users.js`):
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```js
+{ [userId]: { username, avatarUrl, inventory: [{ id, name, level, skins: [{ num, name }] }] } }
+```
 
-## Learn More
+Set `db_pass` (e.g. in `.env.local`) to read from Redis.
 
-To learn more about Next.js, take a look at the following resources:
+### Mock data for development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Without `db_pass`, or with `USE_MOCK_DATA=1`, the app serves `lib/mockUsers.js` instead: 12 fake players built
+from real champions and skins, so the UI can be developed without database access.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Regenerate it (e.g. after new champions are released) with:
 
-## Deploy on Vercel
+```bash
+npm run mock:generate
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `pages/` – routes; data is loaded in `getServerSideProps`
+- `components/` – UI (`Layout`, `Leaderboard`, `Profile`, `SkinViewer`, …), styled with CSS modules
+- `lib/users.js` – Redis / mock data access
+- `lib/ddragon.js` – latest Data Dragon version and champion count (cached for an hour)
+- `lib/collection.js` – ranking, stats, rarity tiers and art URLs
