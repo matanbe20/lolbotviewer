@@ -124,7 +124,7 @@ export default function SkinViewer({ champion, version, onClose }) {
             )}
             <ul className={styles.strip} ref={stripRef}>
               {skins.map((skin, i) => (
-                <li key={skin.num}>
+                <li key={`${skin.num}-${i}`}>
                   <button
                     type="button"
                     className={`${styles.thumb} ${i === index ? styles.thumbActive : ""}`}

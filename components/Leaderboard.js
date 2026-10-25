@@ -161,9 +161,9 @@ export default function Leaderboard({ players, totals, meta }) {
                     <span className={styles.rowName}>{player.username}</span>
                   </span>
                   <span className={`${styles.mains} ${styles.hideMd}`}>
-                    {player.top.map((c) => (
+                    {player.top.map((c, i) => (
                       <img
-                        key={c.id}
+                        key={`${c.id}-${i}`}
                         src={art.icon(meta.version, c.id)}
                         alt={c.name}
                         title={`${c.name} · Lv ${c.level}`}

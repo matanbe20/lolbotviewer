@@ -35,7 +35,11 @@ export default function Profile({ user, rank, totalPlayers, meta }) {
   const [selected, setSelected] = useState(null);
   const closeViewer = useCallback(() => setSelected(null), []);
 
-  const inventory = user.inventory;
+  // The same champion can appear more than once, so key cards by their original position.
+  const inventory = useMemo(
+    () => user.inventory.map((c, i) => ({ ...c, uid: `${c.id}-${i}` })),
+    [user.inventory]
+  );
   const main = useMemo(() => byLevel(inventory)[0], [inventory]);
   const completion = percent(inventory.length, meta.championCount);
 
@@ -169,7 +173,7 @@ export default function Profile({ user, rank, totalPlayers, meta }) {
             {visible.map((c, i) => {
               const t = tierFor(levelOf(c));
               return (
-                <li key={c.id} style={{ "--delay": `${Math.min(i, 18) * 25}ms` }}>
+                <li key={c.uid} style={{ "--delay": `${Math.min(i, 18) * 25}ms` }}>
                   <button type="button" className={`${styles.champ} ${styles[t.key]}`} onClick={() => setSelected(c)}>
                     <img className={styles.champImg} src={art.loading(c.id)} alt="" loading="lazy" />
                     <span className={styles.champShade} />
